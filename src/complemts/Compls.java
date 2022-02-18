@@ -8,9 +8,6 @@ public class Compls {
 	public String saida;
 	
 
-	public Compls() {
-		
-	}
 	
 	public Compls(String entrada, String veiculo, String placa, String saida) {
 		//this.preco = preco;

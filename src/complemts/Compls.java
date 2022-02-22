@@ -1,15 +1,23 @@
 package complemts;
 
+import java.util.Calendar;
+import java.util.TimeZone;
+
+import convertsDate.Conversion;
+
+
 public class Compls {
+	
+	Conversion conn = new Conversion();
 	//public int preco;
-	public String entrada;
+	public Calendar entrada;
 	public String veiculo;
 	public String placa;
-	public String saida;
+	public Calendar saida;
+	
 	
 
-	
-	public Compls(String entrada, String veiculo, String placa, String saida) {
+	public Compls(Calendar entrada, String veiculo, String placa, Calendar saida) {
 		//this.preco = preco;
 		this.entrada = entrada;
 		this.veiculo = veiculo;
@@ -19,12 +27,12 @@ public class Compls {
 		
 	}
 	
-  public String getEntrada() {
+  public Calendar getEntrada() {
 		return entrada;
 	}
 	
 	
-	public void setEntrada(String entrada) {
+	public void setEntrada(Calendar entrada) {
 		this.entrada = entrada;
 	}
 	
@@ -41,12 +49,12 @@ public class Compls {
 		this.placa = placa;
 	}
 	
-	public String getSaida() {
+	public Calendar getSaida() {
 		return saida;
 	}
 	
 	
-	public void setSaida(String saida) {
+	public void setSaida(Calendar saida) {
 		this.saida = saida;
 	}
 	
@@ -58,15 +66,25 @@ public class Compls {
 		
 	}
 	
+	public Calendar getDuracao() {
+	    TimeZone.setDefault(TimeZone.getTimeZone("GMT"));
+	    Calendar duracao = Calendar.getInstance();
+	    duracao.setTimeInMillis(saida.getTimeInMillis() - getEntrada().getTimeInMillis());
+
+	    return duracao;
+	}
+
+	
+	
 	public String toString(){
 	return "Entrada: "
-		   +entrada
+		   +entrada.getTime()
 		   +"\nVeiculo: "
 		   +veiculo
 		   +"\nplaca: "
 		   +placa
 		   +"\nSaida: "
-		   +saida;
+		   +saida.getTime();
 	}
 }
 
